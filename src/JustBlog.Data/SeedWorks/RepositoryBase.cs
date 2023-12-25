@@ -13,6 +13,7 @@ namespace JustBlog.Data.SeedWorks
         public RepositoryBase(JustBlogContext context)
         {
             _dbSet = context.Set<T>();
+            _context = context;
         }
 
         public void Add(T entity)

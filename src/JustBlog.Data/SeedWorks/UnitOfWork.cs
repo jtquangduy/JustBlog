@@ -1,4 +1,8 @@
-﻿using JustBlog.Core.SeedWorks;
+﻿using AutoMapper;
+using JustBlog.Core.Domain.Content;
+using JustBlog.Core.Repositories;
+using JustBlog.Core.SeedWorks;
+using JustBlog.Data.Repositories;
 
 namespace JustBlog.Data.SeedWorks
 {
@@ -6,9 +10,12 @@ namespace JustBlog.Data.SeedWorks
     {
         private readonly JustBlogContext _context;
 
-        public UnitOfWork(JustBlogContext context)
+        public IPostRepository Posts { get; private set; }
+
+        public UnitOfWork(JustBlogContext context, IMapper mapper)
         {
             _context = context;
+            Posts = new PostRepository(context, mapper);
         }
 
         public async Task<int> CompleteAsync()
