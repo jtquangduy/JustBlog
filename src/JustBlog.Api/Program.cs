@@ -1,5 +1,6 @@
 using JustBlog.Api;
 using JustBlog.Core.Domain.Identity;
+using JustBlog.Core.Models.Content;
 using JustBlog.Core.SeedWorks;
 using JustBlog.Data;
 using JustBlog.Data.Repositories;
@@ -57,6 +58,8 @@ foreach (var service in services)
         builder.Services.Add(new ServiceDescriptor(directInterface, service, ServiceLifetime.Scoped));
     }
 }
+
+builder.Services.AddAutoMapper(typeof(PostInListDto));
 
 //Default config for ASP.NET Core
 builder.Services.AddControllers();
