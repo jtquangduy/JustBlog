@@ -8,6 +8,8 @@ namespace JustBlog.Data.SeedWorks
     {
         private readonly DbSet<T> _dbSet;
 
+        protected readonly JustBlogContext _context;
+
         public RepositoryBase(JustBlogContext context)
         {
             _dbSet = context.Set<T>();
