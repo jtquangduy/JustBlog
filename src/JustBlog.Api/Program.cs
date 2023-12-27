@@ -1,4 +1,5 @@
 using JustBlog.Api;
+using JustBlog.Api.Filters;
 using JustBlog.Api.Services;
 using JustBlog.Core.ConfigOptions;
 using JustBlog.Core.Domain.Identity;
