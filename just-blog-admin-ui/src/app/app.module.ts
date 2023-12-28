@@ -1,8 +1,15 @@
 import { AlertService } from './shared/services/alert.service';
-import { environment } from './../environments/environment.prod';
-import { ADMIN_API_BASE_URL, AdminApiAuthApiClient } from './api/admin-api.service.generated';
+import { environment } from './../environments/environment';
+import {
+  ADMIN_API_BASE_URL,
+  AdminApiAuthApiClient,
+} from './api/admin-api.service.generated';
 import { NgModule } from '@angular/core';
-import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {
+  HashLocationStrategy,
+  LocationStrategy,
+  PathLocationStrategy,
+} from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -16,7 +23,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Import containers
-import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './containers';
+import {
+  DefaultFooterComponent,
+  DefaultHeaderComponent,
+  DefaultLayoutComponent,
+} from './containers';
 
 import {
   AvatarModule,
@@ -36,7 +47,7 @@ import {
   SharedModule,
   SidebarModule,
   TabsModule,
-  UtilitiesModule
+  UtilitiesModule,
 } from '@coreui/angular';
 
 import { ToastModule } from 'primeng/toast';
@@ -44,11 +55,12 @@ import { ToastModule } from 'primeng/toast';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { MessageService } from 'primeng/api';
 import { HttpClientModule } from '@angular/common/http';
+import { TokenStorageService } from './shared/services/token-storage.service';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
-  DefaultLayoutComponent
+  DefaultLayoutComponent,
 ];
 
 @NgModule({
@@ -81,24 +93,24 @@ const APP_CONTAINERS = [
     CardModule,
     NgScrollbarModule,
     ToastModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {
       provide: ADMIN_API_BASE_URL,
-      useValue: environment.API_URL
+      useValue: environment.API_URL,
     },
     {
       provide: LocationStrategy,
-      useClass: HashLocationStrategy
+      useClass: HashLocationStrategy,
     },
     IconSetService,
     Title,
     MessageService,
     AlertService,
-    AdminApiAuthApiClient
+    AdminApiAuthApiClient,
+    TokenStorageService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}
