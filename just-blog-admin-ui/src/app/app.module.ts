@@ -1,3 +1,5 @@
+import { environment } from './../environments/environment.prod';
+import { ADMIN_API_BASE_URL } from './api/admin-api.service.generated';
 import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
@@ -75,6 +77,10 @@ const APP_CONTAINERS = [
     NgScrollbarModule
   ],
   providers: [
+    {
+      provide: ADMIN_API_BASE_URL,
+      useValue: environment.API_URL
+    },
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
