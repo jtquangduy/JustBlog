@@ -17,6 +17,16 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 var connectionString = configuration.GetConnectionString("DefaultConnection");
 
+var JustBlogCorsPolicy = "JustBlogCorsPolicy";
+
+builder.Services.AddCors(o => o.AddPolicy(JustBlogCorsPolicy, builder =>
+{
+    builder.AllowAnyMethod()
+        .AllowAnyHeader()
+        .WithOrigins(configuration["AllowedOrigins"])
+        .AllowCredentials();
+}));
+
 // Add services to the container. 
 
 //Config DB Context and ASP.NET Core Identity
@@ -108,6 +118,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseCors(JustBlogCorsPolicy);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

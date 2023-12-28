@@ -7,7 +7,10 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+  template: `
+    <p-toast position="top-left"></p-toast>
+    <router-outlet></router-outlet>
+  `,
 })
 export class AppComponent implements OnInit {
   title = 'Just Blog Admin UI';

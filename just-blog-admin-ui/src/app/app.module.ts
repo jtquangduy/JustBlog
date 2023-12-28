@@ -1,5 +1,6 @@
+import { AlertService } from './shared/services/alert.service';
 import { environment } from './../environments/environment.prod';
-import { ADMIN_API_BASE_URL } from './api/admin-api.service.generated';
+import { ADMIN_API_BASE_URL, AdminApiAuthApiClient } from './api/admin-api.service.generated';
 import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
@@ -38,7 +39,11 @@ import {
   UtilitiesModule
 } from '@coreui/angular';
 
+import { ToastModule } from 'primeng/toast';
+
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { MessageService } from 'primeng/api';
+import { HttpClientModule } from '@angular/common/http';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -74,7 +79,9 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    ToastModule,
+    HttpClientModule
   ],
   providers: [
     {
@@ -86,7 +93,10 @@ const APP_CONTAINERS = [
       useClass: HashLocationStrategy
     },
     IconSetService,
-    Title
+    Title,
+    MessageService,
+    AlertService,
+    AdminApiAuthApiClient
   ],
   bootstrap: [AppComponent]
 })
