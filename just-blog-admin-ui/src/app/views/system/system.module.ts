@@ -17,6 +17,7 @@ import { SharedModule } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { KeyFilterModule } from 'primeng/keyfilter';
+import { PermissionGrantComponent } from './roles/permission-grant.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,11 @@ import { KeyFilterModule } from 'primeng/keyfilter';
     SharedModule,
     JtSharedModule,
   ],
-  declarations: [UserComponent, RoleComponent, RolesDetailComponent],
+  declarations: [
+    UserComponent,
+    RoleComponent,
+    RolesDetailComponent,
+    PermissionGrantComponent,
+  ],
 })
 export class SystemModule {}

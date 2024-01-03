@@ -12,7 +12,6 @@ const routes: Routes = [
       title: 'Trang chủ',
       requiredPolicy: 'Permissions.DashBoard.View',
     },
-    canActivate: [AuthGuard],
   },
 ];
 
