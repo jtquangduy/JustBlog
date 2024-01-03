@@ -1,3 +1,5 @@
+import { JtSharedModule } from './../../shared/modules/jt-shared.module';
+import { RolesDetailComponent } from './roles/roles-detail.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,6 +16,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { SharedModule } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { KeyFilterModule } from 'primeng/keyfilter';
 
 @NgModule({
   imports: [
@@ -28,8 +31,10 @@ import { InputTextModule } from 'primeng/inputtext';
     CheckboxModule,
     ButtonModule,
     InputTextModule,
+    KeyFilterModule,
     SharedModule,
+    JtSharedModule,
   ],
-  declarations: [UserComponent, RoleComponent],
+  declarations: [UserComponent, RoleComponent, RolesDetailComponent],
 })
 export class SystemModule {}

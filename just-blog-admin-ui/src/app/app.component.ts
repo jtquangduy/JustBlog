@@ -9,6 +9,12 @@ import { Title } from '@angular/platform-browser';
   selector: 'app-root',
   template: `
     <p-toast position="top-left"></p-toast>
+    <p-confirmDialog
+      header="Xác nhận"
+      acceptLabel="Có"
+      rejectLabel="Không"
+      icon="pi pi-exclamation-triangle"
+    ></p-confirmDialog>
     <router-outlet></router-outlet>
   `,
 })

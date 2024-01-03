@@ -59,7 +59,9 @@ import { AuthGuard } from './shared/auth.guard';
 
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { GlobalHttpInterceptorService } from './shared/interceptors/error-handler.interceptor';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+import { UtilityService } from './shared/services/utility.service';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -97,7 +99,9 @@ const APP_CONTAINERS = [
     CardModule,
     NgScrollbarModule,
     ToastModule,
-    HttpClientModule,
+    HttpClientModule,    
+    ConfirmDialogModule,
+    DynamicDialogModule
   ],
   providers: [
     {
@@ -130,6 +134,7 @@ const APP_CONTAINERS = [
     AdminApiRoleApiClient,
     DialogService,
     ConfirmationService,
+    UtilityService,
   ],
   bootstrap: [AppComponent],
 })
