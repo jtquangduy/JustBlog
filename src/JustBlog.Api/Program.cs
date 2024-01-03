@@ -1,4 +1,5 @@
 using JustBlog.Api;
+using JustBlog.Api.Authorization;
 using JustBlog.Api.Filters;
 using JustBlog.Api.Services;
 using JustBlog.Core.ConfigOptions;
@@ -9,6 +10,7 @@ using JustBlog.Data;
 using JustBlog.Data.Repositories;
 using JustBlog.Data.SeedWorks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -21,6 +23,9 @@ var configuration = builder.Configuration;
 var connectionString = configuration.GetConnectionString("DefaultConnection");
 
 var JustBlogCorsPolicy = "JustBlogCorsPolicy";
+
+builder.Services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
+builder.Services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
 
 builder.Services.AddCors(o => o.AddPolicy(JustBlogCorsPolicy, builder =>
 {
