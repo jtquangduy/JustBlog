@@ -8,10 +8,13 @@ using JustBlog.Core.SeedWorks;
 using JustBlog.Data;
 using JustBlog.Data.Repositories;
 using JustBlog.Data.SeedWorks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -27,7 +30,7 @@ builder.Services.AddCors(o => o.AddPolicy(JustBlogCorsPolicy, builder =>
         .AllowCredentials();
 }));
 
-// Add services to the container. 
+// Add services to the container.
 
 //Config DB Context and ASP.NET Core Identity
 builder.Services.AddDbContext<JustBlogContext>(options =>
@@ -102,6 +105,22 @@ builder.Services.AddSwaggerGen(c =>
         Description = "API for CMS core domain. This domain keeps track of campaigns, campaign rules, and campaign execution."
     });
     c.ParameterFilter<SwaggerNullableParameterFilter>();
+});
+
+builder.Services.AddAuthentication(o =>
+{
+    o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(cfg =>
+{
+    cfg.RequireHttpsMetadata = false;
+    cfg.SaveToken = true;
+    cfg.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidIssuer = configuration["JwtTokenSettings:Issuer"],
+        ValidAudience = configuration["JwtTokenSettings:Issuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtTokenSettings:Key"]))
+    };
 });
 
 var app = builder.Build();

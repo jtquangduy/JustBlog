@@ -10,8 +10,9 @@ const routes: Routes = [
     component: DashboardComponent,
     data: {
       title: 'Trang chủ',
-      requiredPolicy: 'Permissions.DashBoard.View',      
+      requiredPolicy: 'Permissions.DashBoard.View',
     },
+    canActivate: [AuthGuard],
   },
 ];
 
