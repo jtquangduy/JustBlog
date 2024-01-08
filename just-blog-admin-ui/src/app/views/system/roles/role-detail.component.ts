@@ -1,7 +1,7 @@
 import {
   AdminApiRoleApiClient,
   RoleDto,
-} from './../../../api/admin-api.service.generated';
+} from '../../../api/admin-api.service.generated';
 import { Component, OnInit, EventEmitter, OnDestroy } from '@angular/core';
 import {
   Validators,
@@ -14,9 +14,9 @@ import { Subject, takeUntil } from 'rxjs';
 import { UtilityService } from '../../../shared/services/utility.service';
 
 @Component({
-  templateUrl: 'roles-detail.component.html',
+  templateUrl: 'role-detail.component.html',
 })
-export class RolesDetailComponent implements OnInit, OnDestroy {
+export class RoleDetailComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject<void>();
 
   // Default
