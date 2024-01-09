@@ -6,6 +6,8 @@ namespace JustBlog.Core.SeedWorks
     {
         IPostRepository Posts { get; }
 
+        IPostCategoryRepository PostCategories { get; }
+
         Task<int> CompleteAsync();
     }
 }

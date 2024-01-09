@@ -3,6 +3,7 @@ import { environment } from './../environments/environment';
 import {
   ADMIN_API_BASE_URL,
   AdminApiAuthApiClient,
+  AdminApiPostCategoryApiClient,
   AdminApiRoleApiClient,
   AdminApiTestApiClient,
   AdminApiTokenApiClient,
@@ -134,6 +135,7 @@ const APP_CONTAINERS = [
     AdminApiTokenApiClient,
     AdminApiRoleApiClient,
     AdminApiUserApiClient,
+    AdminApiPostCategoryApiClient,
     DialogService,
     ConfirmationService,
     UtilityService,
